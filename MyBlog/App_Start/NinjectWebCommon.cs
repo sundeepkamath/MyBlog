@@ -10,6 +10,9 @@ namespace MyBlog.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Core.RepositoryInterfaces;
+    using Core.Repositories;
+    using Core.DatabaseContexts;
 
     public static class NinjectWebCommon 
     {
@@ -44,7 +47,7 @@ namespace MyBlog.App_Start
             {
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
+                
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -61,6 +64,8 @@ namespace MyBlog.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<BlogContext>().To<BlogContext>().InRequestScope();
+            kernel.Bind<IBlogRepository>().To<BlogRepository>().InRequestScope();
         }        
     }
 }
