@@ -18,7 +18,7 @@ namespace MyBlog.Core.Repositories
 
         public IList<Post> GetPosts(int pageNumber, int pageSize)
         {
-            var pagesToSkip = pageNumber > 1 ? (pageNumber - 1) : 1;
+            var pagesToSkip = pageNumber == 1?0 : ( pageNumber > 1 ? (pageNumber - 1) : 1);
 
             return _context.Posts
                     .Where(p => p.Published)
