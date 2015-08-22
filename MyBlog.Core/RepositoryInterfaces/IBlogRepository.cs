@@ -1,11 +1,13 @@
 ﻿using MyBlog.Core.Entities;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MyBlog.Core.RepositoryInterfaces
 {
     public interface IBlogRepository
     {
-        IQueryable<Post> GetPosts();
+        IList<Post> GetPosts(int pageNumber, int pageSize);
 
+        int TotalPosts();
     }
 }

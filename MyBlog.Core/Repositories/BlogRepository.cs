@@ -1,8 +1,10 @@
 ﻿using MyBlog.Core.RepositoryInterfaces;
-using System;
 using System.Linq;
 using MyBlog.Core.Entities;
 using MyBlog.Core.DatabaseContexts;
+using System.Data.Entity;
+using System.Collections.Generic;
+using System;
 
 namespace MyBlog.Core.Repositories
 {
@@ -14,9 +16,22 @@ namespace MyBlog.Core.Repositories
             _context = context;
         }
 
-        public IQueryable<Post> GetPosts()
+        public IList<Post> GetPosts(int pageNumber, int pageSize)
         {
-            return _context.Posts;
+            var pagesToSkip = pageNumber > 1 ? (pageNumber - 1) : 1;
+
+            return _context.Posts
+                    .Where(p => p.Published)
+                    .OrderByDescending(p => p.PostedOn)
+                    .Skip(pagesToSkip * pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Category)
+                    .ToList<Post>();
+        }
+
+        public int TotalPosts()
+        {
+            return _context.Posts.Where(p => p.Published).Count();
         }
     }
 }

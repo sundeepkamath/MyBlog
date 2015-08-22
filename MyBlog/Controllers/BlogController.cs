@@ -1,4 +1,5 @@
 ﻿using MyBlog.Core.RepositoryInterfaces;
+using MyBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,13 @@ namespace MyBlog.Controllers
             _repo = repo;
         }
         // GET: Blog
-        public ActionResult Index()
+        public ViewResult Posts(int pageNumber = 1)
         {
-            return View();
+            var viewModel = new ListViewModel(_repo, pageNumber);
+
+            ViewBag.Title = "Latest Posts";
+
+            return View("List", viewModel);
         }
     }
 }
