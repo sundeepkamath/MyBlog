@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBlog.Core.RepositoryInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,12 @@ namespace MyBlog.Controllers
 {
     public class BlogController : Controller
     {
+        IBlogRepository _repo;
+
+        public BlogController(IBlogRepository repo)
+        {
+            _repo = repo;
+        }
         // GET: Blog
         public ActionResult Index()
         {
