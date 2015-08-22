@@ -105,6 +105,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\themes\night_sky\admin.css" />
+    <Content Include="Content\themes\night_sky\images\arrow.png" />
+    <Content Include="Content\themes\night_sky\images\back.png" />
+    <Content Include="Content\themes\night_sky\images\bullet.png" />
+    <Content Include="Content\themes\night_sky\images\graphic.png" />
+    <Content Include="Content\themes\night_sky\images\link.png" />
+    <Content Include="Content\themes\night_sky\images\logo.jpg" />
+    <Content Include="Content\themes\night_sky\images\logo.png" />
+    <Content Include="Content\themes\night_sky\images\search.png" />
+    <Content Include="Content\themes\night_sky\style.css" />
+    <Content Include="Content\themes\night_sky\images\tabs.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -121,6 +132,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\Blog\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -130,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Blog\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBlog.Core\MyBlog.Core.csproj">

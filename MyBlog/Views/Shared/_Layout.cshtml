@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href=@Url.Content("~/Content/themes/night_sky/style.css") rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <!--Header-->
+        <div id="header">
+            <div id="logo">
+                <div id="logo_text">
+                    <!-- class="logo_colour", allows you to change the colour of the text -->
+                    <h1><a href="index.html">My<span class="logo_colour">Blog</span></a></h1>
+                    <h2>Where code finds expression ...</h2>
+                </div>
+            </div>
+
+            <!--Navigation-->
+            <div id="menubar">
+                <ul id="menu">
+                    <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+                    <li>@Html.ActionLink("Posts", "Posts")</li>
+                    <li>@Html.ActionLink("Contact", "Contact")</li>
+                    <li>@Html.ActionLink("About Me", "AboutMe")</li>
+                </ul>
+            </div>
+        </div>
+
+        <!--Site content-->
+        <div id="site_content">
+            @RenderBody()
+        </div>
+
+        <!--Footer-->
+        <div id="footer">
+            <p>Copyright &copy; @DateTime.Now.Year My Blog All rights reserved</p>
+        </div>
+    </div>
+</body>
+</html>
