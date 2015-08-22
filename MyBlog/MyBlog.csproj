@@ -125,6 +125,10 @@
     <Content Include="Content\themes\night_sky\style.css" />
     <Content Include="Content\themes\night_sky\images\tabs.png" />
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +152,7 @@
     <Content Include="Views\Blog\_PostTemplate.cshtml" />
     <Content Include="App_Code\Helper.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
