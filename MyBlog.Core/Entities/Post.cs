@@ -8,6 +8,11 @@ namespace MyBlog.Core.Entities
 {
     public class Post   
     {
+        public Post()
+        {
+            this.Tags = new List<Tag>();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; }
@@ -18,7 +23,7 @@ namespace MyBlog.Core.Entities
         public DateTime PostedOn { get; set; }
         public DateTime? ModifiedOn { get; set; }
         public Category Category{ get; set; }
-        public ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
 
     }
 }
