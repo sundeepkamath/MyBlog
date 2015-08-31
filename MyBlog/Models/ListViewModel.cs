@@ -15,7 +15,16 @@ namespace MyBlog.Models
             TotalPosts = repo.TotalPosts();
         }
 
+        public ListViewModel(IBlogRepository repo, string category, int pageNumber)
+        {
+            Posts = repo.GetPostsForCategory(category, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+            TotalPosts = repo.TotalPostsForCategory(category);
+            Category = repo.Category(category);
+        }
+
         public IList<Post> Posts { get; set; }
         public int TotalPosts { get; set; }
+
+        public Category Category { get; set; }
     }
 }

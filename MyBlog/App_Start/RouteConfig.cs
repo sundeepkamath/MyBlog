@@ -18,6 +18,12 @@ namespace MyBlog
                             "{action}",
                             new { controller = "Blog", action = "Posts" }
                           );
+
+            routes.MapRoute(
+                            "Category",
+                            "category/{category}",
+                            new { controller = "Blog", action = "Category" }
+                          );
         }
     }
 }

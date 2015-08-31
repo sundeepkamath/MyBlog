@@ -25,5 +25,19 @@ namespace MyBlog.Controllers
 
             return View("List", viewModel);
         }
+
+        public ViewResult Category(string category, int pageNumber = 1)
+        {
+            var viewModel = new ListViewModel(_repo, category, pageNumber);
+
+            if (viewModel.Category == null)
+                throw new HttpException(404, "Category Not found");
+
+            ViewBag.Title = string.Format(@"Latest posts on category ""{0}""", 
+                                            viewModel.Category.Name);
+
+            return View("List", viewModel);
+
+        }
     }
 }

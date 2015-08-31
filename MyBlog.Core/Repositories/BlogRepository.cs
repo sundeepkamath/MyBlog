@@ -33,5 +33,33 @@ namespace MyBlog.Core.Repositories
         {
             return _context.Posts.Where(p => p.Published).Count();
         }
+
+        public IList<Post> GetPostsForCategory(string categorySlug, int pageNumber, int pageSize)
+        {
+            var pagesToSkip = pageNumber == 1 ? 0 : (pageNumber > 1 ? (pageNumber - 1) : 1);
+
+            return _context.Posts
+                    .Where(p => p.Category.UrlSlug == categorySlug && p.Published)
+                    .OrderByDescending(p => p.PostedOn)
+                    .Skip(pagesToSkip * pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Category)
+                    .Include(p => p.Tags)
+                    .ToList<Post>();
+        }
+
+        public int TotalPostsForCategory(string categorySlug)
+        {
+            return _context.Posts
+                    .Where(p => p.Published && p.Category.UrlSlug == categorySlug)
+                    .Count();
+
+        }
+
+        public Category Category(string categorySlug)
+        {
+            return _context.Categories
+                    .FirstOrDefault<Category>(c=> c.UrlSlug == categorySlug);
+        }
     }
 }
