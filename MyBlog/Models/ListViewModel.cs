@@ -15,16 +15,29 @@ namespace MyBlog.Models
             TotalPosts = repo.TotalPosts();
         }
 
-        public ListViewModel(IBlogRepository repo, string category, int pageNumber)
+        public ListViewModel(IBlogRepository repo, string urlSlug, string type, int pageNumber)
         {
-            Posts = repo.GetPostsForCategory(category, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
-            TotalPosts = repo.TotalPostsForCategory(category);
-            Category = repo.Category(category);
+            switch(type)
+            {
+                case "Tag":
+                    Posts = repo.GetPostsForTag(urlSlug, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+                    TotalPosts = repo.TotalPostsForTag(urlSlug);
+                    Tag = repo.Tag(urlSlug);
+                    break;
+                default:
+                    Posts = repo.GetPostsForCategory(urlSlug, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+                    TotalPosts = repo.TotalPostsForCategory(urlSlug);
+                    Category = repo.Category(urlSlug);
+                    break;
+            }
+            
         }
 
         public IList<Post> Posts { get; set; }
         public int TotalPosts { get; set; }
 
         public Category Category { get; set; }
+
+        public Tag Tag { get; set; }
     }
 }

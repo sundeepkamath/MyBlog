@@ -61,5 +61,32 @@ namespace MyBlog.Core.Repositories
             return _context.Categories
                     .FirstOrDefault<Category>(c=> c.UrlSlug == categorySlug);
         }
+
+        public IList<Post> GetPostsForTag(string tagSlug, int pageNumber, int pageSize)
+        {
+            var pagesToSkip = pageNumber == 1 ? 0 : (pageNumber > 1 ? (pageNumber - 1) : 1);
+
+            return _context.Posts
+                    .Where(p => p.Published && p.Tags.Any(t => t.UrlSlug == tagSlug))
+                    .OrderByDescending(p => p.PostedOn)
+                    .Skip(pagesToSkip * pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Category)
+                    .Include(p => p.Tags)
+                    .ToList<Post>();
+        }
+
+        public int TotalPostsForTag(string tagSlug)
+        {
+            return _context.Posts
+                    .Where(p => p.Published && p.Tags.Any(t => t.UrlSlug == tagSlug))
+                    .Count();
+        }
+
+        public Tag Tag(string tagSlug)
+        {
+            return _context.Tags
+                    .FirstOrDefault<Tag>(t => t.UrlSlug == tagSlug);
+        }
     }
 }

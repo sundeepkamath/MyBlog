@@ -15,5 +15,11 @@ namespace MyBlog.Core.RepositoryInterfaces
         int TotalPostsForCategory(string categorySlug);
 
         Category Category(string categorySlug);
+
+        IList<Post> GetPostsForTag(string tagSlug, int pageNumber, int pageSize);
+
+        int TotalPostsForTag(string tagSlug);
+
+        Tag Tag(string tagSlug);
     }
 }

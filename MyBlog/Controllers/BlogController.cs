@@ -28,7 +28,7 @@ namespace MyBlog.Controllers
 
         public ViewResult Category(string category, int pageNumber = 1)
         {
-            var viewModel = new ListViewModel(_repo, category, pageNumber);
+            var viewModel = new ListViewModel(_repo, category, "Category", pageNumber);
 
             if (viewModel.Category == null)
                 throw new HttpException(404, "Category Not found");
@@ -38,6 +38,19 @@ namespace MyBlog.Controllers
 
             return View("List", viewModel);
 
+        }
+
+        public ViewResult Tag(string tag, int pageNumber = 1)
+        {
+            var viewModel = new ListViewModel(_repo, tag, "Tag", pageNumber);
+
+            if (viewModel.Tag == null)
+                throw new HttpException(404, "Tag not found");
+
+            ViewBag.Title = string.Format(@"Latest posts on tag ""{0}""", 
+                                                viewModel.Tag.Name);
+
+            return View("List", viewModel);
         }
     }
 }
