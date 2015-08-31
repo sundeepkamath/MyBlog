@@ -11,7 +11,7 @@ namespace MyBlog.Models
     {
         public ListViewModel(IBlogRepository repo, int pageNumber)
         {
-            Posts = repo.GetPosts(pageNumber, 10);
+            Posts = repo.GetPosts(pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
             TotalPosts = repo.TotalPosts();
         }
 
