@@ -319,3 +319,33 @@ table tr td
 { background: #E5E5DB;
   color: #47433F;
   border-top: 1px solid #FFF;}
+
+ .post .post-title
+{ display: inline-block; }
+  
+.post .post-category, .post-tags
+  { float: left; margin-right: 10px; }
+  
+.post .tags-div
+{ font-style: italic; display:inline; }
+
+.post .tags-div a
+{ margin-right: 5px; }
+
+.post .posted-date
+{ float: right; }
+
+.post .row
+{ clear: both; }
+
+.post .post-body
+{ margin-top: 25px; clear: both; }
+
+.post .post-foot
+{ float: right; }
+
+.pager
+{ margin-top:20px; clear: right; }
+
+.pager .next
+{ float: right; }
