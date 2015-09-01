@@ -52,5 +52,14 @@ namespace MyBlog.Controllers
 
             return View("List", viewModel);
         }
+
+        public ViewResult Search(string txtSearch, int pageNumber = 1)
+        {
+            var viewModel = new ListViewModel(_repo, txtSearch, "Search", pageNumber);
+
+            ViewBag.Title = string.Format(@"Lists of posts found for search text ""{0}""", txtSearch);
+
+            return View("List", viewModel);
+        }
     }
 }

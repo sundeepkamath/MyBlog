@@ -21,5 +21,9 @@ namespace MyBlog.Core.RepositoryInterfaces
         int TotalPostsForTag(string tagSlug);
 
         Tag Tag(string tagSlug);
+
+        IList<Post> GetPostsForSearch(string search, int pageNumber, int pagesize);
+
+        int TotalPostsForSearch(string search);
     }
 }

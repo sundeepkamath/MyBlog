@@ -88,5 +88,33 @@ namespace MyBlog.Core.Repositories
             return _context.Tags
                     .FirstOrDefault<Tag>(t => t.UrlSlug == tagSlug);
         }
+
+        public IList<Post> GetPostsForSearch(string search, int pageNumber, int pagesize)
+        {
+            var pagesToSkip = pageNumber == 1 ? 0 : (pageNumber > 1 ? (pageNumber - 1) : 1);
+
+            return _context.Posts
+                    .Where(p => p.Published &&
+                            p.Title.Contains(search) ||
+                            p.Category.Name.Equals(search) ||
+                            p.Tags.Any(t => t.Name.Equals(search))
+                            )
+                    .OrderByDescending(p => p.PostedOn)
+                    .Skip(pagesToSkip * pagesize)
+                    .Take(pagesize)
+                    .Include(p => p.Category)
+                    .Include(p => p.Tags)
+                    .ToList<Post>();
+        }
+
+        public int TotalPostsForSearch(string search)
+        {
+            return _context.Posts
+                    .Where(p => p.Published &&
+                            p.Title.Contains(search) ||
+                            p.Category.Name.Equals(search) ||
+                            p.Tags.Any(t => t.Name.Equals(search))
+                            ).Count();
+        }
     }
 }

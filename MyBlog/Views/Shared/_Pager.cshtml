@@ -22,9 +22,9 @@
 if (ViewContext.RouteData.Values["action"].ToString()
   .Equals("search", StringComparison.OrdinalIgnoreCase))
 {
-    var s = String.Format("?s={0}", ViewContext.RequestContext.HttpContext.Request.QueryString["s"]);
-    prev = String.Format("{0}&{1}", s, prev);
-    next = String.Format("{0}&{1}", s, next);
+    var searchTerm = String.Format("?txtSearch={0}", ViewContext.RequestContext.HttpContext.Request.QueryString["txtSearch"]);
+    prev = String.Format("{0}&{1}", searchTerm, prev);
+    next = String.Format("{0}&{1}", searchTerm, next);
 }
 else
 {

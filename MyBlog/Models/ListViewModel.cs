@@ -15,29 +15,36 @@ namespace MyBlog.Models
             TotalPosts = repo.TotalPosts();
         }
 
-        public ListViewModel(IBlogRepository repo, string urlSlug, string type, int pageNumber)
+        public ListViewModel(IBlogRepository repo, string text, string type, int pageNumber)
         {
             switch(type)
             {
+                case "Category":
+                    Posts = repo.GetPostsForCategory(text, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+                    TotalPosts = repo.TotalPostsForCategory(text);
+                    Category = repo.Category(text);
+                    break;
                 case "Tag":
-                    Posts = repo.GetPostsForTag(urlSlug, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
-                    TotalPosts = repo.TotalPostsForTag(urlSlug);
-                    Tag = repo.Tag(urlSlug);
+                    Posts = repo.GetPostsForTag(text, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+                    TotalPosts = repo.TotalPostsForTag(text);
+                    Tag = repo.Tag(text);
                     break;
                 default:
-                    Posts = repo.GetPostsForCategory(urlSlug, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
-                    TotalPosts = repo.TotalPostsForCategory(urlSlug);
-                    Category = repo.Category(urlSlug);
+                    Posts = repo.GetPostsForSearch(text, pageNumber, ConfigUtil.ReadFromConfig(Constants.PAGE_SIZE));
+                    TotalPosts = repo.TotalPostsForSearch(text);
+                    Search = text;
                     break;
             }
             
         }
 
-        public IList<Post> Posts { get; set; }
-        public int TotalPosts { get; set; }
+        public IList<Post> Posts { get; private set; }
+        public int TotalPosts { get; private set; }
 
-        public Category Category { get; set; }
+        public Category Category { get; private set; }
 
-        public Tag Tag { get; set; }
+        public Tag Tag { get; private set; }
+
+        public string Search { get; private set; }
     }
 }

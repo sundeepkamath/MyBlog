@@ -30,6 +30,8 @@ namespace MyBlog
                     "tag/{tag}",
                     new {controller="Blog", action="Tag" }
                 );
+
+          
         }
     }
 }
