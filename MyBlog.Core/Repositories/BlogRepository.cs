@@ -130,5 +130,10 @@ namespace MyBlog.Core.Repositories
         {
             return _context.Categories.OrderBy(c=>c.Name).ToList<Category>();
         }
+
+        public IList<Tag> GetTags()
+        {
+            return _context.Tags.OrderBy(t => t.Name).ToList<Tag>();
+        }
     }
 }

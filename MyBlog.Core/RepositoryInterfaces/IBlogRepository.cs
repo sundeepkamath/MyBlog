@@ -29,5 +29,7 @@ namespace MyBlog.Core.RepositoryInterfaces
         Post GetPost(int year, int month, string urlSlug);
 
         IList<Category> GetCategories();
+
+        IList<Tag> GetTags();
     }
 }

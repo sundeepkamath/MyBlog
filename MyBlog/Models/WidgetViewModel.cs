@@ -12,8 +12,10 @@ namespace MyBlog.Models
         public WidgetViewModel(IBlogRepository repo)
         {
             Categories = repo.GetCategories();
+            Tags = repo.GetTags();
         }
 
-        public IList<Category> Categories{ get; set; }
+        public IList<Category> Categories{ get; private set; }
+        public IList<Tag> Tags{ get; private set; }
     }
 }
