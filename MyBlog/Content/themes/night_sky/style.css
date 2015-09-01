@@ -349,3 +349,12 @@ table tr td
 
 .pager .next
 { float: right; }
+
+#search-form 
+{ float: right; clear: both; }
+
+#search-form  p
+{ display: inline-block; }
+
+#search-form #s
+{ width: 140px; }
