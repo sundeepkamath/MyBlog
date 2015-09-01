@@ -125,5 +125,10 @@ namespace MyBlog.Core.Repositories
                                 p.UrlSlug == urlSlug)
                     .Single<Post>();
         }
+
+        public IList<Category> GetCategories()
+        {
+            return _context.Categories.OrderBy(c=>c.Name).ToList<Category>();
+        }
     }
 }

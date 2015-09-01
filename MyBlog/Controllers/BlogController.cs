@@ -74,5 +74,12 @@ namespace MyBlog.Controllers
 
             return View(post);
         }
+
+        [ChildActionOnly]
+        public PartialViewResult Sidebars()
+        {
+            var widgetViewModel = new WidgetViewModel(_repo);
+            return PartialView("_Sidebars", widgetViewModel);
+        }
     }
 }

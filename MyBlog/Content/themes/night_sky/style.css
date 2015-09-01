@@ -5,13 +5,13 @@ body
   padding: 0px;
   margin: 0px;
   font-size: .78em;
-  background: #090708;
-  color: #5D5D5D;}
+  background: #090708 !important;
+  color: #5D5D5D; }
 
 p
 { margin: 0px;
   padding: 0px 0px 16px 0px;
-  line-height: 1.7em;}
+  line-height: 1.7em; }
 
 h1, h2, h3, h4, h5, h6 
 { font: normal 179% 'century gothic', arial, sans-serif;
@@ -104,7 +104,7 @@ ol li
 { padding-bottom: 40px;}
 
 #header
-{ background: transparent url(logo.jpg) no-repeat;}
+{ /*background: transparent url(images/logo.jpg) no-repeat;*/}
 
 #logo
 { width: 860px;
@@ -185,19 +185,27 @@ ul#menu li a:hover
 { width: 858px;
   overflow: hidden;
   margin: 0 auto 0 auto;
-  padding: 10px 20px 20px 20px;
-  background: #F6F6F0 url(back.png) repeat-y;
+  padding: 10px 20px 40px 20px;
+  background: #F6F6F0 url(images/back.png) repeat-y;
   border: 15px solid #FFF;} 
+  
+#footer
+{ text-align: center; }
+
+#sidebars
+{ float: right; }
 
 .sidebar
-{ float: right;
-  width: 190px;
-  padding: 0 15px 20px 15px;}
+{ width: 200px;
+  padding: 0 15px 20px 15px; }
+ 
+.sidebar h3
+{ margin-left: 20px; font-size: 150%; }
 
 .sidebar ul
 { width: 178px; 
   padding: 4px 0 0 0; 
-  margin: 4px 0 30px 0;}
+  margin: 4px 0 4px 0;}
 
 .sidebar li
 { list-style: none; 
@@ -206,7 +214,7 @@ ul#menu li a:hover
 .sidebar li a, .sidebar li a:hover
 { padding: 0 0 0 35px;
   display: block;
-  background: transparent url(link.png) no-repeat left center;
+  background: transparent url(images/link.png) no-repeat left center;
   border: 0;} 
 
 .sidebar li a.selected
@@ -215,14 +223,15 @@ ul#menu li a:hover
 #content
 { text-align: left;
   width: 613px;
-  padding: 0;}
+  padding: 0; 
+  float: left; }
 
 #content ul
 { margin: 2px 0 22px 0px;}
 
 #content ul li
 { list-style-type: none;
-  background: url(bullet.png) no-repeat;
+  background: url(images/bullet.png) no-repeat;
   margin: 0 0 0 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}
@@ -259,11 +268,11 @@ ul#menu li a:hover
 { margin: 15px 0 0 0;}
 
 .form_settings p
-{ padding: 0 0 4px 0;}
+{ padding: 0 0 20px 0;}
 
-.form_settings span
+.form_settings span.field
 { float: left; 
-  width: 200px; 
+  width: 100px; 
   text-align: left;}
   
 .form_settings input, .form_settings textarea
@@ -278,7 +287,7 @@ ul#menu li a:hover
 { font: 100% arial; 
   border: 0; 
   width: 99px; 
-  margin: 0 0 0 212px; 
+  margin: 0 0 0 305px; 
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
@@ -358,3 +367,48 @@ table tr td
 
 #search-form #s
 { width: 140px; }
+
+span.field-validation-error
+{ color: red !important; }
+
+.photo
+{ float: left; margin-right: 10px; }
+
+.tags
+{ padding: 0 0 20px 20px; }
+
+.tags a
+{ margin: 3px; 
+  display: inline-block; }
+
+#disqus_thread ul {
+  margin: 0 !important;
+  padding: 0  !important;   
+  list-style-type: none !important;
+}
+
+ #disqus_thread ul li {
+  list-style-type: none !important;
+  padding: 0  !important;  
+  background: none !important;
+ }
+
+div.no-of-comments {
+  float: right;
+  margin-left: 10px;
+}
+
+div.share-links {
+  margin-bottom: 10px;
+}
+
+div.share-links a {
+  border-bottom: none !important;
+}
+
+div.feeddiv {
+  float: right; 
+  margin-bottom: 20px; 
+  text-align: center;
+  width: 200px;
+}
