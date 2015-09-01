@@ -31,7 +31,14 @@ namespace MyBlog
                     new {controller="Blog", action="Tag" }
                 );
 
-          
+            routes.MapRoute(
+                    "Post",
+                    "Archive/{year}/{month}/{title}",
+                    new { controller = "Blog", action = "Post" },
+                    new {year = @"\d{4}", month=@"\d{2}" }
+                );
+
+
         }
     }
 }

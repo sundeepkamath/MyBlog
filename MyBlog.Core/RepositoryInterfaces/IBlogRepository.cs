@@ -25,5 +25,7 @@ namespace MyBlog.Core.RepositoryInterfaces
         IList<Post> GetPostsForSearch(string search, int pageNumber, int pagesize);
 
         int TotalPostsForSearch(string search);
+
+        Post GetPost(int year, int month, string urlSlug);
     }
 }

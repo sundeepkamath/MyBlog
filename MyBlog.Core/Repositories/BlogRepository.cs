@@ -116,5 +116,14 @@ namespace MyBlog.Core.Repositories
                             p.Tags.Any(t => t.Name.Equals(search))
                             ).Count();
         }
+
+        public Post GetPost(int year, int month, string urlSlug)
+        {
+            return _context.Posts
+                    .Where(p=>p.PostedOn.Year == year &&
+                                p.PostedOn.Month == month &&
+                                p.UrlSlug == urlSlug)
+                    .Single<Post>();
+        }
     }
 }
