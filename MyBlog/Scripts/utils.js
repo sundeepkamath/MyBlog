@@ -10,4 +10,10 @@
             console.warn("Error converting date time", ex);
         }
     });
+
+    $('#search-form').submit(function () {
+        if ($("#txtSearch").val().trim())
+            return true;
+        return false;
+    });
 });
