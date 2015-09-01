@@ -135,5 +135,12 @@ namespace MyBlog.Core.Repositories
         {
             return _context.Tags.OrderBy(t => t.Name).ToList<Tag>();
         }
+
+        public IList<Post> GetPosts()
+        {
+            return _context.Posts
+                    .Where(p => p.Published)
+                    .OrderByDescending(p => p.PostedOn).ToList<Post>();
+        }
     }
 }

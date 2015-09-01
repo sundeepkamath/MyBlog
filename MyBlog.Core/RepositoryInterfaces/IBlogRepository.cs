@@ -31,5 +31,7 @@ namespace MyBlog.Core.RepositoryInterfaces
         IList<Category> GetCategories();
 
         IList<Tag> GetTags();
+
+        IList<Post> GetPosts();
     }
 }

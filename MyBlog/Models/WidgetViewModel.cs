@@ -13,9 +13,14 @@ namespace MyBlog.Models
         {
             Categories = repo.GetCategories();
             Tags = repo.GetTags();
+            LatestPosts = repo.GetPosts()
+                            .Take(ConfigUtil.ReadFromConfig(Constants.LATEST_POSTS_COUNT))
+                            .ToList<Post>();
         }
 
         public IList<Category> Categories{ get; private set; }
         public IList<Tag> Tags{ get; private set; }
+
+        public IList<Post> LatestPosts { get; set; }
     }
 }
